@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://dwqo1j7y38evq"]
+
+[ext_resource type="Script" path="res://Levels/Level.gd" id="1_uue3l"]
+[ext_resource type="PackedScene" uid="uid://bx2511r537ex" path="res://Player/player.tscn" id="2_0h2yn"]
+[ext_resource type="PackedScene" uid="uid://dpjx4arwdrn7c" path="res://World/tile_map.tscn" id="2_4q0nv"]
+[ext_resource type="PackedScene" path="res://Enemies/spikes.tscn" id="3_sf0ti"]
+[ext_resource type="PackedScene" path="res://Enemies/walking_enemy.tscn" id="4_t6v6a"]
+[ext_resource type="PackedScene" path="res://World/ladder.tscn" id="5_wttxk"]
+[ext_resource type="PackedScene" path="res://Enemies/moving_spike_enemy.tscn" id="6_0pu1w"]
+[ext_resource type="PackedScene" path="res://World/checkpoint.tscn" id="7_tvx6t"]
+[ext_resource type="PackedScene" path="res://Enemies/stomp_enemy.tscn" id="8_kv38x"]
+[ext_resource type="PackedScene" uid="uid://betx11ec8hgbx" path="res://World/door.tscn" id="9_4se4w"]
+
+[sub_resource type="Curve2D" id="Curve2D_3lhic"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1.52588e-05, 0, 0, 0, 0, 0, 1.52588e-05, 63)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_caqxw"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 108, 0, 0, 0, 0, 0, 108, -54, 0, 0, 0, 0, 0, -54, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_uue3l")
+
+[node name="Player" parent="." instance=ExtResource("2_0h2yn")]
+position = Vector2(36, 108)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="TileMap" parent="." instance=ExtResource("2_4q0nv")]
+position = Vector2(-54, 18)
+collision_animatable = false
+layer_0/tile_data = PackedInt32Array(393220, 65541, 1, 393221, 196613, 1, 458757, 262149, 1, 458758, 131077, 1, 458759, 131077, 1, 458756, 65541, 6, 524293, 131077, 7, 524292, 65541, 7, 524294, 131077, 7, 524295, 131077, 7, 524296, 131077, 7, 458760, 131077, 1, 458761, 131077, 1, 458762, 327685, 1, 458763, 131077, 6, 524299, 131077, 7, 524298, 131077, 7, 524297, 131077, 7, 393227, 327685, 1, 327691, 65541, 1, 327692, 196613, 1, 393228, 262149, 1, 393229, 131077, 1, 458765, 131077, 6, 458764, 131077, 6, 524300, 131077, 7, 524301, 131077, 7, 524302, 131077, 7, 393226, 65541, 1, 458766, 262149, 1, 393230, 196613, 1, 458767, 131077, 1, 458768, 131077, 1, 524304, 131077, 7, 524303, 131077, 7, 458769, 131077, 1, 458770, 327685, 1, 524306, 131077, 7, 524305, 131077, 7, 458771, 131077, 6, 393235, 327685, 1, 393236, 131077, 6, 327700, 131077, 1, 458772, 131077, 6, 524307, 131077, 7, 524308, 131077, 7, 393237, 262149, 1, 458773, 131077, 6, 458774, 131077, 6, 524309, 131077, 7, 524310, 131077, 7, 327701, 196613, 1, 393238, 131077, 1, 393239, 131077, 1, 393240, 131077, 1, 393241, 131077, 1, 393242, 131077, 1, 458778, 131077, 6, 524314, 131077, 7, 524313, 131077, 7, 524312, 131077, 7, 524311, 131077, 7, 458775, 131077, 6, 458776, 131077, 6, 458777, 131077, 6, 524315, 131077, 7, 458779, 131077, 6, 393243, 327685, 1, 327707, 65541, 1, 327708, 131077, 1, 393244, 131077, 6, 458780, 131077, 6, 524316, 131077, 7, 327709, 131077, 1, 393245, 131077, 6, 458781, 131077, 6, 524317, 131077, 7, 327710, 196613, 1, 393246, 262149, 1, 458782, 131077, 6, 524318, 131077, 7, 393234, 65541, 1, 327699, 65541, 1, 65555, 458757, 2, 65551, 458757, 2, 65552, 458757, 2, 65553, 458757, 2, 65554, 458757, 2, 23, 458757, 2, 27, 458757, 2, 26, 458757, 2, 25, 458757, 2, 24, 458757, 2, -65513, 458757, 2, -65512, 458757, 2, -65511, 458757, 2, -65510, 458757, 2, -65509, 458757, 2, 393247, 131077, 1, 393248, 131077, 1, 393249, 131077, 1, 393250, 131077, 1, 458786, 131077, 6, 458785, 131077, 6, 524321, 131077, 7, 524320, 131077, 7, 524319, 131077, 7, 458783, 131077, 6, 458784, 131077, 6, 524322, 131077, 7, 524323, 131077, 7, 524324, 131077, 7, 524325, 196613, 7, 458789, 196613, 6, 393253, 196613, 1, 393252, 131077, 1, 393251, 131077, 1, 458788, 131077, 6, 458787, 131077, 6)
+
+[node name="Spikes" parent="." instance=ExtResource("3_sf0ti")]
+position = Vector2(225, 144)
+
+[node name="Spikes2" parent="." instance=ExtResource("3_sf0ti")]
+position = Vector2(243, 144)
+
+[node name="Spikes3" parent="." instance=ExtResource("3_sf0ti")]
+position = Vector2(261, 144)
+
+[node name="Ladder" parent="." instance=ExtResource("5_wttxk")]
+position = Vector2(198, 36)
+
+[node name="Ladder2" parent="." instance=ExtResource("5_wttxk")]
+position = Vector2(198, 54)
+
+[node name="Ladder3" parent="." instance=ExtResource("5_wttxk")]
+position = Vector2(198, 72)
+
+[node name="Ladder4" parent="." instance=ExtResource("5_wttxk")]
+position = Vector2(198, 90)
+
+[node name="Ladder5" parent="." instance=ExtResource("5_wttxk")]
+position = Vector2(198, 108)
+
+[node name="Checkpoint" parent="." instance=ExtResource("7_tvx6t")]
+position = Vector2(279, 36)
+
+[node name="Door" parent="." instance=ExtResource("9_4se4w")]
+position = Vector2(612, 126)
+target_level_path = "res://Levels/Level2.tscn"
+
+[node name="StompEnemy" parent="." instance=ExtResource("8_kv38x")]
+position = Vector2(324, 54)
+
+[node name="WalkingEnemy" parent="." instance=ExtResource("4_t6v6a")]
+position = Vector2(450, 108)
+
+[node name="MovingSpikeEnemy" parent="." instance=ExtResource("6_0pu1w")]
+position = Vector2(252, 63)
+curve = SubResource("Curve2D_3lhic")
+animation_type = 1
+
+[node name="MovingSpikeEnemy2" parent="." instance=ExtResource("6_0pu1w")]
+position = Vector2(351, 45)
+curve = SubResource("Curve2D_caqxw")

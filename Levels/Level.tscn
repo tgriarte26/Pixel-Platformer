@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Levels/Level.gd" id="1_sh0mc"]
+[ext_resource type="PackedScene" uid="uid://bx2511r537ex" path="res://Player/player.tscn" id="2_10pyo"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_sh0mc")
+
+[node name="Player" parent="." instance=ExtResource("2_10pyo")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]

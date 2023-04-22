@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="PackedScene" path="res://Levels/Level.tscn" id="1_b677y"]
+[ext_resource type="PackedScene" uid="uid://dpjx4arwdrn7c" path="res://World/tile_map.tscn" id="2_7ulok"]
+[ext_resource type="PackedScene" path="res://Enemies/walking_enemy.tscn" id="3_1dsox"]
+[ext_resource type="PackedScene" path="res://World/checkpoint.tscn" id="4_0k1jt"]
+
+[node name="Level2" instance=ExtResource("1_b677y")]
+
+[node name="Player" parent="." index="0"]
+position = Vector2(36, 126)
+
+[node name="TileMap" parent="." index="3" instance=ExtResource("2_7ulok")]
+layer_0/tile_data = PackedInt32Array(524288, 65541, 1, 589824, 65541, 7, 589825, 131077, 7, 589826, 131077, 7, 589827, 131077, 7, 589828, 131077, 7, 589829, 131077, 7, 589830, 131077, 7, 589831, 196613, 7, 524295, 262149, 0, 524294, 131077, 6, 458758, 327685, 1, 524293, 327685, 1, 524292, 131077, 1, 524291, 131077, 1, 524290, 131077, 1, 524289, 131077, 1, 458759, 131077, 6, 393223, 131077, 1, 393222, 65541, 1, 458757, 65541, 1, 524296, 131077, 7, 524297, 131077, 7, 524298, 131077, 7, 524299, 196613, 7, 458763, 196613, 6, 393227, 196613, 1, 393226, 131077, 1, 393225, 131077, 1, 393224, 131077, 1, 458760, 131077, 6, 458761, 131077, 6, 458762, 131077, 6, 393231, 65541, 1, 458767, 65541, 6, 524303, 65541, 7, 524304, 131077, 7, 524305, 131077, 7, 524306, 131077, 7, 524307, 131077, 7, 524308, 131077, 7, 524309, 196613, 7, 458773, 196613, 6, 393237, 196613, 1, 393236, 131077, 1, 393235, 131077, 1, 393234, 131077, 1, 393233, 131077, 1, 393232, 131077, 1, 458771, 131077, 6, 458772, 131077, 6, 458770, 131077, 6, 458769, 131077, 6, 458768, 131077, 6)
+
+[node name="Checkpoint" parent="." index="4" instance=ExtResource("4_0k1jt")]
+position = Vector2(288, 108)
+
+[node name="WalkingEnemy" parent="." index="5" instance=ExtResource("3_1dsox")]
+position = Vector2(126, 108)

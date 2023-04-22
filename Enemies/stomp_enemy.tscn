@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://Enemies/stomp_enemy.gd" id="1_idy51"]
+[ext_resource type="Texture2D" uid="uid://b2ag0yhaxomut" path="res://characters_packed.png" id="1_l1652"]
+[ext_resource type="PackedScene" path="res://Hitboxes/hitbox.tscn" id="2_4jihj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02yr7"]
+atlas = ExtResource("1_l1652")
+region = Rect2(120, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ffer"]
+atlas = ExtResource("1_l1652")
+region = Rect2(96, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fi351"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02yr7")
+}],
+"loop": true,
+"name": &"Falling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ffer")
+}],
+"loop": true,
+"name": &"Rising",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4h4au"]
+size = Vector2(14, 14)
+
+[sub_resource type="Gradient" id="Gradient_y33g2"]
+offsets = PackedFloat32Array(0, 0.987552, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.811765, 0.811765, 0.811765, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_afv05"]
+gradient = SubResource("Gradient_y33g2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wb3gq"]
+emission_shape = 3
+emission_box_extents = Vector3(9, 2, 0)
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, 2, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_min = 360.0
+angle_max = 360.0
+scale_min = 4.0
+scale_max = 4.0
+color = Color(1, 1, 1, 0.607843)
+color_ramp = SubResource("GradientTexture1D_afv05")
+
+[node name="StompEnemy" type="Node2D"]
+script = ExtResource("1_idy51")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -9)
+sprite_frames = SubResource("SpriteFrames_fi351")
+animation = &"Rising"
+
+[node name="Hitbox" parent="." instance=ExtResource("2_4jihj")]
+position = Vector2(0, -9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_4h4au")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 3)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_wb3gq")
+explosiveness = 1.0
